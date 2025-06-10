@@ -1,4 +1,6 @@
+from DataBase.BD import *
 import sqlite3
+
 
 from CRUD.CRUD_Usuario import (
     crear_usuario,
@@ -24,7 +26,16 @@ from sqlite3 import Error
 #   python -m proyectoFinalBD.main
 
 def conectar_db():
-    return sqlite3.connect("DbUsuario.db")
+    conn = sqlite3.connect("DbUsuario.db")
+    crear_tablas(conn)
+    return conn
+
+# funcion para contabilizar los usuarios dentro de la base de datos - es solo de testeo
+def count_usuarios(conn):
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM Usuario")
+    total = cursor.fetchone()[0]
+    print(f"Usuarios en la base de datos: {total}")
 
 # ----------- MENÚ DE TAREAS -----------
 def menu_tareas(conn, id_usuario):
@@ -92,6 +103,8 @@ def menu_tareas(conn, id_usuario):
 # ----------- MENÚ PRINCIPAL -----------
 def main():
     conn = conectar_db()
+    # Contabiliza cuantos usuarios hay en la base de datos - es solo para testear
+    count_usuarios(conn) 
     try:
         while True:
             print("\n=== Bienvenido a la App de Tareas ===")
