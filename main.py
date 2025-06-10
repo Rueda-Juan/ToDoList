@@ -1,6 +1,7 @@
 from DataBase.BD import *
 import sqlite3
-
+import os
+import time
 
 from CRUD.CRUD_Usuario import (
     crear_usuario,
@@ -37,9 +38,13 @@ def count_usuarios(conn):
     total = cursor.fetchone()[0]
     print(f"Usuarios en la base de datos: {total}")
 
+# funcion para limpiar la pantalla de comandos
+def limpiar_pantalla():
+    os.system('cls' if os.name == 'nt' else 'clear')
 # ----------- MENÚ DE TAREAS -----------
 def menu_tareas(conn, id_usuario):
     while True:
+        limpiar_pantalla()
         print("\n=== Menú de Tareas ===")
         print("1. Ver tareas")
         print("2. Crear tarea")
@@ -50,23 +55,29 @@ def menu_tareas(conn, id_usuario):
         opcion = input("Selecciona una opción: ")
 
         if opcion == "1":
+            limpiar_pantalla()
             tareas = obtener_tareas_por_usuario(conn, id_usuario)
             if tareas:
                 print("\n Tus tareas:")
                 for t in tareas:
-                    estado = "Completado" if t[5] else "Pendiente"
+                    estado = "Completado" if t[6] else "Pendiente"
                     print(f"[{t[0]}] {t[2]} - {estado}")
                     if t[3]:
                         print(f"   {t[3]}")
             else:
                 print("No tienes tareas.")
+            input("\nPresione Enter para volver al menu...")
+
         elif opcion == "2":
+            limpiar_pantalla()
             titulo = input("Título de la tarea: ").strip()
             descripcion = input("Descripción (opcional): ").strip()
             crear_tarea(conn, id_usuario, titulo, descripcion)
             print("Tarea creada.")
+            time.sleep(3)
 
         elif opcion == "3":
+            limpiar_pantalla()
             id_tarea = input("ID de la tarea a editar: ").strip()
             titulo = input("Nuevo título (enter para dejar igual): ").strip()
             descripcion = input("Nueva descripción (enter para dejar igual): ").strip()
@@ -75,8 +86,10 @@ def menu_tareas(conn, id_usuario):
             else:
                 actualizado = actualizar_tarea(conn, int(id_tarea), titulo if titulo else None, descripcion if descripcion else None)
                 print("Tarea actualizada." if actualizado else " No se pudo actualizar.")
+            time.sleep(3)
 
         elif opcion == "4":
+            limpiar_pantalla()
             id_tarea = input("ID de la tarea a eliminar: ").strip()
             if not id_tarea.isdigit():
                 print("ID inválido.")
@@ -85,20 +98,25 @@ def menu_tareas(conn, id_usuario):
                 if confirmado == "s":
                     eliminado = eliminar_tarea(conn, int(id_tarea))
                     print("Tarea eliminada." if eliminado else "No se encontró la tarea.")
+            time.sleep(3)
 
         elif opcion == "5":
+            limpiar_pantalla()
             id_tarea = input("ID de la tarea a marcar como completada: ").strip()
             if not id_tarea.isdigit():
                 print("ID inválido.")
             else:
                 completada = actualizar_tarea(conn, int(id_tarea), completada=1)
                 print(" Tarea marcada como completada." if completada else " No se pudo completar la tarea.")
+            time.sleep(3)
 
         elif opcion == "6":
             print("Cerrando sesión...")
+            time.sleep(3)
             break
         else:
             print("Opción inválida. Intenta de nuevo.")
+            time.sleep(3)
 
 # ----------- MENÚ PRINCIPAL -----------
 def main():
@@ -107,6 +125,7 @@ def main():
     count_usuarios(conn) 
     try:
         while True:
+            limpiar_pantalla()
             print("\n=== Bienvenido a la App de Tareas ===")
             print("1. Iniciar sesión")
             print("2. Registrarse")
@@ -121,9 +140,13 @@ def main():
                 registrar(conn)
             elif opcion == "3":
                 print("¡Hasta luego!")
+                time.sleep(2)
+                limpiar_pantalla()
                 break
             else:
                 print("Opción inválida. Intenta de nuevo.")
+                time.sleep(3)
+                limpiar_pantalla()
     finally:
         conn.close()
 
