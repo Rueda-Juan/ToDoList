@@ -1,6 +1,6 @@
 import sqlite3
 from sqlite3 import Error
-from proyectoFinalBD.CRUD_Usuario import crear_usuario, obtener_usuario, actualizar_usuario, eliminar_usuario
+from ToDoList.CRUD_Usuario import crear_usuario, obtener_usuario, actualizar_usuario, eliminar_usuario
 
 
 

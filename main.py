@@ -1,18 +1,18 @@
 import sqlite3
 
-from proyectoFinalBD.CRUD_Usuario import (
+from ToDoList.CRUD_Usuario import (
     crear_usuario,
     obtener_usuario,
     obtener_usuario_por_correo
 )
-from proyectoFinalBD.CRUD_Tarea import (
+from ToDoList.CRUD_Tarea import (
     crear_tarea,
     obtener_tarea,
     obtener_tareas_por_usuario,
     actualizar_tarea,
     eliminar_tarea
 )
-from proyectoFinalBD.Servicios import (
+from ToDoList.Servicios import (
     login,
     verificar_credenciales,
     registrar

@@ -1,6 +1,6 @@
 import sqlite3
 from sqlite3 import Error
-from proyectoFinalBD.sql_loader import cargar_sql_por_nombre
+from ToDoList.sql_loader import cargar_sql_por_nombre
 
 #USUARIO
 #CREATE
