@@ -38,6 +38,7 @@ def crear_tablas(conexion):
             titulo TEXT NOT NULL,
             descripcion TEXT,
             completada BOOLEAN DEFAULT 0,
+            fecha_limite TEXT,
             FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
         );
     ''')

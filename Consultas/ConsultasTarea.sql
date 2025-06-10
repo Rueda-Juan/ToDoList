@@ -1,12 +1,14 @@
--- Conuslta para creae una tarea
-INSERT INTO Tarea(id_usuario, titulo, descripcion) VALUES (?,?,?);
+-- crear_tarea
+INSERT INTO Tarea(id_usuario, titulo, descripcion) VALUES (?, ?, ?);
 
--- Consulta para obtener una tarea
+-- obtener_tarea
 SELECT * FROM Tarea WHERE id_tarea = ?;
 
--- Consulta para obtener todas las tareas
+-- obtener_tareas_por_usuario
 SELECT * FROM Tarea WHERE id_usuario = ?;
 
--- Consulta para eliminar tarea
-DELETE FROM Tarea WHERE id_tarea = ?;
+-- actualizar_tarea
+UPDATE Tarea SET {campos} WHERE id_tarea = ?;
 
+-- eliminar_tarea
+DELETE FROM Tarea WHERE id_tarea = ?;

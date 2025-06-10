@@ -1,17 +1,18 @@
 import sqlite3
-from .CRUD_Usuario import (
+
+from proyectoFinalBD.CRUD_Usuario import (
     crear_usuario,
     obtener_usuario,
     obtener_usuario_por_correo
 )
-from .CRUD_Tarea import (
+from proyectoFinalBD.CRUD_Tarea import (
     crear_tarea,
     obtener_tarea,
     obtener_tareas_por_usuario,
     actualizar_tarea,
     eliminar_tarea
 )
-from .Servicios import (
+from proyectoFinalBD.Servicios import (
     login,
     verificar_credenciales,
     registrar

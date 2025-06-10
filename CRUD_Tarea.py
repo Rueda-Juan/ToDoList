@@ -1,9 +1,12 @@
 import sqlite3
 from sqlite3 import Error
+
+from proyectoFinalBD.sql_loader import cargar_sql_por_nombre
+
 #TAREA
 # CREATE
 def crear_tarea(conn, id_usuario, titulo, descripcion=None):
-    sql = '''INSERT INTO Tarea(id_usuario, titulo, descripcion) VALUES (?,?,?)'''
+    sql = cargar_sql_por_nombre("Consultas/ConsultasTarea.sql","crear_tarea")
     try:
         cursor = conn.cursor()
         cursor.execute(sql, (id_usuario, titulo, descripcion))
@@ -15,7 +18,7 @@ def crear_tarea(conn, id_usuario, titulo, descripcion=None):
 
 # READ
 def obtener_tarea(conn, id_tarea):
-    sql = "SELECT * FROM Tarea WHERE id_tarea = ?"
+    sql = cargar_sql_por_nombre("Consultas/ConsultasTarea.sql","obtener_tarea")
     try:
         cursor = conn.cursor()
         cursor.execute(sql, (id_tarea,))
@@ -26,7 +29,7 @@ def obtener_tarea(conn, id_tarea):
 
 # READ ALL
 def obtener_tareas_por_usuario(conn, id_usuario):
-    sql = "SELECT * FROM Tarea WHERE id_usuario = ?"
+    sql = cargar_sql_por_nombre("Consultas/ConsultasTarea.sql","obtener_tareas_por_usuario")
     try:
         cursor = conn.cursor()
         cursor.execute(sql, (id_usuario,))
@@ -67,7 +70,7 @@ def actualizar_tarea(conn, id_tarea, titulo=None, descripcion=None, completada=N
 
 # DELETE
 def eliminar_tarea(conn, id_tarea):
-    sql = "DELETE FROM Tarea WHERE id_tarea = ?"
+    sql = cargar_sql_por_nombre("Consultas/ConsultasTarea.sql","eliminar_tarea")
     try:
         cursor = conn.cursor()
         cursor.execute(sql, (id_tarea,))
