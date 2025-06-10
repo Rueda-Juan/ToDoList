@@ -1,11 +1,11 @@
 import sqlite3
 from sqlite3 import Error
-from ToDoList.sql_loader import cargar_sql_por_nombre
+from Utils.sql_loader import cargar_sql_por_nombre
 
 #USUARIO
 #CREATE
 def crear_usuario(conn, correo, nombre, contraseña):
-    sql = cargar_sql_por_nombre("Consultas/ConsultasUsuario.sql","crear_usuario")
+    sql = cargar_sql_por_nombre("../DataBase/Consultas/ConsultasUsuario.sql","crear_usuario")
     try:
         cursor = conn.cursor()
         cursor.execute(sql, (correo, nombre, contraseña))
@@ -17,7 +17,7 @@ def crear_usuario(conn, correo, nombre, contraseña):
 
 #READ
 def obtener_usuario(conn, id_usuario):
-    sql = cargar_sql_por_nombre("Consultas/ConsultasUsuario.sql","obtener_usuario")
+    sql = cargar_sql_por_nombre("../DataBase/Consultas/ConsultasUsuario.sql","obtener_usuario")
     try:
         cursor = conn.cursor()
         cursor.execute(sql, (id_usuario,))
@@ -27,7 +27,7 @@ def obtener_usuario(conn, id_usuario):
     return None
 
 def obtener_usuario_por_correo(conn, correo):
-    sql = cargar_sql_por_nombre("Consultas/ConsultasUsuario.sql","obtener_usuario_por_correo")
+    sql = cargar_sql_por_nombre("../DataBase/Consultas/ConsultasUsuario.sql","obtener_usuario_por_correo")
     try:
         cursor = conn.cursor()
         cursor.execute(sql, (correo,))
@@ -65,7 +65,7 @@ def actualizar_usuario(conn, id_usuario, nombre=None, contraseña=None):
     
 #DELETE
 def eliminar_usuario(conn, id_usuario):
-    sql = cargar_sql_por_nombre("Consultas/ConsultasUsuario.sql","eliminar_usuario")
+    sql = cargar_sql_por_nombre("../DataBase/Consultas/ConsultasUsuario.sql","eliminar_usuario")
     try:
         cursor = conn.cursor()
         cursor.execute(sql, (id_usuario,))

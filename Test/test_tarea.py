@@ -7,7 +7,7 @@ import sys
 # Añadir la ruta del proyecto al sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from ToDoList.CRUD_Tarea import (
+from CRUD.CRUD_Tarea import (
     crear_tarea,
     obtener_tarea,
     obtener_tareas_por_usuario,
@@ -15,7 +15,7 @@ from ToDoList.CRUD_Tarea import (
     eliminar_tarea
 )
 
-from ToDoList.CRUD_Usuario import crear_usuario  # Para insertar un usuario y asignarle tareas
+from CRUD.CRUD_Usuario import crear_usuario  # Para insertar un usuario y asignarle tareas
 
 # ----------------------
 # Setup de Base de Datos

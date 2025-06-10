@@ -1,18 +1,18 @@
 import sqlite3
 
-from ToDoList.CRUD_Usuario import (
+from CRUD.CRUD_Usuario import (
     crear_usuario,
     obtener_usuario,
     obtener_usuario_por_correo
 )
-from ToDoList.CRUD_Tarea import (
+from CRUD.CRUD_Tarea import (
     crear_tarea,
     obtener_tarea,
     obtener_tareas_por_usuario,
     actualizar_tarea,
     eliminar_tarea
 )
-from ToDoList.Servicios import (
+from Utils.Servicios import (
     login,
     verificar_credenciales,
     registrar
