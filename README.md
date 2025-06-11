@@ -94,4 +94,34 @@ TodoList/
 |   └── Servicios.py
 |   └── sql_loader.py
 |   └── Validaciones.py
-├── main.py         
+├── main.py 
+```
+
+##### Clonar Repositorio
+```git
+  git clone https://github.com/Rueda-Juan/ToDoList.git
+```
+
+##### Acceder a la carpeta ToDoList
+```git
+  git cd ToDoList
+```
+
+##### Ejecutar el proyecto
+```
+  python -m main
+```
+
+##### Ejecutar los Test
+```
+  python -m pytest
+```
+##### Instalar dependencias de los Test
+```
+  pip install pytest
+```
+
+##### Instalar dependencias de bcrypt para encriptar contraseñas
+```
+  pip install bcrypt
+```
