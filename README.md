@@ -15,8 +15,22 @@
   <img src="img/Diagrama entidad relacion BD usuario-tarea.png" alt="Captura de pantalla" width="500"/>
 </p>
 
+## Motor Elegido
+SQLite
+- Se eligio SQLites debido a que ambos integrantes ya teniamos un poco de experiencia trabajando con este motor
+
 ## Consultas SQL
-### consultas SQL para Usuario
+
+### Creacion de la tabla Usuario
+```sql
+    CREATE TABLE IF NOT EXISTS Usuario(
+            id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
+            nombre TEXT NOT NULL,
+            correo TEXT UNIQUE NOT NULL,
+            contraseña TEXT NOT NULL
+        )
+```
+#### consultas SQL para Usuario
 ```sql
 -- crear_usuario
 INSERT INTO Usuario(correo, nombre, contraseña) VALUES (?, ?, ?);
@@ -33,8 +47,19 @@ UPDATE Usuario SET {campos} WHERE id_usuario = ?;
 -- eliminar_usuario
 DELETE FROM Usuario WHERE id_usuario = ?;
 ```
-
-### Constula SQL para Tarea
+### Creacion de la tabla Tarea
+``` sql
+    CREATE TABLE IF NOT EXISTS Tarea(
+            id_tarea INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_usuario INTEGER NOT NULL,
+            titulo TEXT NOT NULL,
+            descripcion TEXT,
+            fecha_creacion TEXT DEFAULT CURRENT_TIMESTAMP,
+            completada INTEGER DEFAULT 0,
+            FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario) ON DELETE CASCADE
+        )
+```
+#### Constula SQL para Tarea
 ```sql
 -- crear_tarea
 INSERT INTO Tarea(id_usuario, titulo, descripcion) VALUES (?, ?, ?);
