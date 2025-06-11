@@ -103,8 +103,8 @@ TodoList/
 ```
 
 ##### Acceder a la carpeta ToDoList
-```git
-  git cd ToDoList
+```
+  cd ToDoList
 ```
 
 ##### Ejecutar el proyecto
