@@ -97,7 +97,7 @@ def registrar(conn):
 
 def tareas_pendientes(conn,id_usuario):
     tareas = obtener_tareas_por_usuario(conn, id_usuario)
-    pendientes = [t for t in tareas if t[5] == 0]  # t[5] = completada
+    pendientes = [t for t in tareas if t[6] == 0]  # t[5] = completada
 
     if not tareas:
         print("No tenés tareas creadas.")

@@ -18,7 +18,6 @@ def crear_tablas(conn):
             titulo TEXT NOT NULL,
             descripcion TEXT,
             fecha_creacion TEXT DEFAULT CURRENT_TIMESTAMP,
-            fecha_limite TEXT,
             completada INTEGER DEFAULT 0,
             FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario) ON DELETE CASCADE
         )
